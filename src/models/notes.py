@@ -1,8 +1,10 @@
-from pydantic import BaseModel
-from datetime import datetime
+from sqlalchemy import Column, Integer, String, DateTime
+from db.database import Base
 
-class Notes(BaseModel):
-    id: int
-    title: str
-    content: str
-    timestamp: datetime
+class Notes(Base):
+    __tablename__ = "notes"
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String, nullable=False)
+    content = Column(String, nullable=False)
+    datetime = Column(DateTime, nullabe=False)
